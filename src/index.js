@@ -12,22 +12,20 @@ export function composeForward<T, U, V>(f1: (vT: T) => U): (f2: (vU: U) => V) =>
     };
 }
 
-function composeReverse<T, U, V>(f2: (vU: U) => V): (f1: (vT: T) => U) => (t: T) => V {
+export function composeReverse<T, U, V>(f2: (vU: U) => V): (f1: (vT: T) => U) => (t: T) => V {
     return (f1: (vT: T) => U) => (t: T) => composeForward(f1)(f2)(t);
 }
 
-function pipeForward<T, U>(x: T): (f1: (vT: T) => U) => U {
+export function pipeForward<T, U>(x: T): (f1: (vT: T) => U) => U {
     return (f1: (vT: T) => U) => f1(x);
 }
 
-function pipeReverse<T, U>(f1: (vT: T) => U): (x: T) => U {
+export function pipeReverse<T, U>(f1: (vT: T) => U): (x: T) => U {
     return (x: T) => pipeForward(x)(f1);
 }
 
-const Globals = {
-    mergeRight: composeForward,
-    mergeLeft: composeReverse,
-    pipeRight: pipeForward,
-    pipeLeft: pipeReverse
-}
-export default Globals;
+export const mergeRight = composeForward;
+export const mergeLeft = composeReverse;
+export const pipeLeft = pipeReverse;
+export const pipeRight = pipeForward;
+export const capitalize = Text.capitalize;
