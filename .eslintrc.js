@@ -2,7 +2,8 @@ module.exports = {
 	env: {
 		browser: true,
 		es6: true,
-		node: true
+		node: true,
+		'jest/globals': true
 	},
 	extends: [
 		'eslint:recommended',
@@ -18,7 +19,7 @@ module.exports = {
 		sourceType: 'module'
 	},
 	parser: 'babel-eslint',
-	plugins: [ 'react', 'prettier', 'flowtype', 'import', 'jsx-a11y' ],
+	plugins: [ 'react', 'prettier', 'flowtype', 'import', 'jsx-a11y', 'jest' ],
 	rules: {
 		'linebreak-style': [ 'error', 'windows' ],
 		quotes: [ 'error', 'single' ],
@@ -66,7 +67,7 @@ module.exports = {
 		'require-await': [ 2 ],
 		'yoda': [ 2],
 		'no-catch-shadow': [2],
-		'no-shadow': [2],
+		'no-shadow': [1],
 		'no-use-before-define': [2],
 		'handle-callback-err': [2],
 		'callback-return': [2],
@@ -84,6 +85,41 @@ module.exports = {
 		'implicit-arrow-linebreak': [ 2, 'beside' ],
 		'jsx-quotes': [ 2, 'prefer-double' ],
 		'indent': [ 2,  4],
-		'func-call-spacing': [ 2, 'never' ]
+		'func-call-spacing': [ 2, 'never' ],
+		'keyword-spacing': [ 1, { before: true, after: true }],
+		'lines-between-class-members': [ 2, 'always', { exceptAfterSingleLine: true } ],
+		'max-depth': [ 1, 4 ],
+		'multiline-ternary': [ 2, 'always' ],
+		'new-cap': [2, 'always' ],
+		'new-parens': [ 2 ],
+		'newline-per-chained-call': [ 2 ],
+		'no-array-constructor': [ 2 ],
+		'no-continue': [ 2 ],
+		'no-bitwise': [ 1] ,
+		'no-lonely-if': [ 2 ],
+		'no-mixed-operators': [ 2 ],
+		'no-mixed-spaces-and-tabs': [ 2 ],
+		'no-multi-assign': [ 2 ],
+		'no-negated-condition': [2],
+		'no-nested-ternary': [ 1],
+		'no-new-object': [ 2 ],
+		'no-plusplus': [ 1],
+		'no-tabs': [2],
+		'no-trailing-spaces': [2],
+		'no-unneeded-ternary': [2], 
+		'no-underscore-dangle': [2],
+		'no-whitespace-before-property': [ 2],
+		'nonblock-statement-body-position': [ 2, 'beside' ],
+		'object-curly-newline': [ 2, 'always' ],
+		'object-curly-spacing': [ 2, 'always' ],
+		'object-property-newline': [ 2 ],
+		'one-var': [ 2, 'always' ],
+		'one-var-declaration-per-line': [ 2, 'always' ],
+		'operator-assignment': [ 2, 'always' ],
+		'operator-linebreak': [2, 'after' ],
+		'padded-blocks': [ 2, 'always' ],
+		'padding-line-between-statements': [ 2 ],
+		'quote-props': [ 2, 'as-needed'],
+		'semi-spacing': [ 2, { before: false, after: false }]
 	}
 };
