@@ -4,7 +4,9 @@ import * as Decorators from './decorators/decorators';
 import * as List from './list/index';
 import * as Text from './text/index';
 
-function composeForward<T, U, V>(f1: (vT: T) => U): (f2: (vU: U) => V) => (t: T) => V {
+export type Nullable<T> = T | void;
+
+export function composeForward<T, U, V>(f1: (vT: T) => U): (f2: (vU: U) => V) => (t: T) => V {
     return (f2: (vU: U) => V) => (t: T) => {
         return f2(f1(t));
     };
@@ -23,9 +25,9 @@ function pipeReverse<T, U>(f1: (vT: T) => U): (x: T) => U {
 }
 
 const Globals = {
-    mergeLeft: composeForward,
-    mergeRight: composeReverse,
-    pipeLeft: pipeForward,
-    pipeRight: pipeReverse
+    mergeRight: composeForward,
+    mergeLeft: composeReverse,
+    pipeRight: pipeForward,
+    pipeLeft: pipeReverse
 }
 export default Globals;

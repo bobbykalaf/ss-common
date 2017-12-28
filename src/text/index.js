@@ -1,13 +1,16 @@
 // @flow
 
-function isNotNull<T>(str: T): boolean {
+function isNotNull<T>(str: T | void | null): boolean {
 	return str != null;
 }
 function isZeroLength<T>(str: string | T[]): boolean {
 	return str.length === 0;
 }
 export function isEmpty(str?: string): boolean {
-	return isNotNull(str) ? isZeroLength(str) : true;
+	if (str == null) {
+		str = '';
+	}
+	return isZeroLength(str);
 }
 
 export function isNotEmpty(str?: string): boolean {
