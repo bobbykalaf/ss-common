@@ -1,2 +1,5 @@
 test-jest 
 node_modules 
+jest
+vscode-jest
+coverage

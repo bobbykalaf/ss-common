@@ -1,27 +1,11 @@
 // @flow
-import * as I from './index';
-import 'jest';
+import * as Text from './index';
 
-var truthy = (func: (x?: string) => boolean, obj) => test(`truthy: ${func.name}`, () => expect(func(obj)).toBeTruthy());
-var falsey = (func: (x?: string) => boolean, obj) => test(`falsey: ${func.name}`, () => expect(func(obj)).toBeFalsy());
-
-var pair = (obj) => {
-    truthy(I.isEmpty, obj);
-    falsey(I.isNotEmpty, obj);
-}
-var pair2 = (obj) => {
-    truthy(I.isNotEmpty, obj);
-    falsey(I.isEmpty, obj);
-}
-pair('');
-pair(undefined);
-pair(null);
-pair2('test');
-pair2('one');
-pair2(' ');
-
-var capitalizeTest = (obj, expected) => test(`Capitalize: ${obj}`, () => expect(I.capitalize(obj)).toBe(expected));
-capitalizeTest('', '');
-capitalizeTest('And', 'And');
-capitalizeTest('or', 'Or');
-capitalizeTest('onetwothree', 'Onetwothree');
+test('capitalize #1', () => expect(Text.capitalize('')).toBe(''));
+test('capitalize #2', () => expect(Text.capitalize('And')).toBe('And'));
+test('capitalize #3', () => expect(Text.capitalize('or')).toBe('Or'));
+test('capitalize #4', () => expect(Text.capitalize('one two')).toBe('One two'));
+test('isNotNullOrEmpty #1', () => expect(Text.isNotNullOrEmpty(null)).toBeFalsy());
+test('isNotNullOrEmpty #2', () => expect(Text.isNotNullOrEmpty(undefined)).toBeFalsy());
+test('isNotNullOrEmpty #3', () => expect(Text.isNotNullOrEmpty('')).toBeFalsy());
+test('isNotNullOrEmpty #4', () => expect(Text.isNotNullOrEmpty('test')).toBeTruthy());

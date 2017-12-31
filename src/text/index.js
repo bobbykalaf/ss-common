@@ -6,17 +6,17 @@ function isNotNull<T>(str: T | void | null): boolean {
 function isZeroLength<T>(str: string | T[]): boolean {
 	return str.length === 0;
 }
-export function isEmpty(str?: string): boolean {
+function isEmpty(str?: string): boolean {
 	if (str == null) {
 		str = '';
 	}
 	return isZeroLength(str);
 }
 
-export function isNotEmpty(str?: string): boolean {
+function isNotEmpty(str?: string): boolean {
 	return !isEmpty(str);
 }
-export function isNotNullOrEmpty(str?: string): boolean {
+function isNotNullOrEmpty(str?: string | null | void): boolean {
 	return str != null && isNotEmpty(str);
 }
 function safeStringOp<T>(fallback: T, func: (x: string) => T): (x: string) => T {
@@ -31,4 +31,9 @@ function safeStringOp<T>(fallback: T, func: (x: string) => T): (x: string) => T 
 
 // export const appendText = (toAppend: string) => (str: string) => [ str, toAppend ].join();
 
-export const capitalize = safeStringOp('', (str: string) => `${str[0].toUpperCase()}${str.substring(1)}`);
+const capitalize = safeStringOp('', (str: string) => `${str[0].toUpperCase()}${str.substring(1)}`);
+
+module.exports = {
+	capitalize
+	, isNotNullOrEmpty
+}

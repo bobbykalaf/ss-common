@@ -1,8 +1,12 @@
 [ignore]
+.*/jest 
+.*/vscode-jest
 
 [include]
+.*/src 
 
 [libs]
+.*/flow-typed
 
 [lints]
 

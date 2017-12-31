@@ -1,12 +1,16 @@
 // @flow
-import 'babel-polyfill';
-import * as Decorators from './decorators/decorators';
+import * as Decorator from './decorators/index';
+import * as Func from './functions/index';
 import * as List from './list/index';
 import * as Text from './text/index';
+import 'babel-polyfill';
 
-export type Nullable<T> = T | void;
-
-
+module.exports = {
+    Decorator
+    , Func
+    , List
+    , Text
+};
 // export function composeForward<T, U, V>(f1: (vT: T) => U): (f2: (vU: U) => V) => (t: T) => V {
 //     return (f2: (vU: U) => V) => (t: T) => {
 //         return f2(f1(t));
